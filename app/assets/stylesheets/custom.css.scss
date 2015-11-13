@@ -1,0 +1,112 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$gray: #555;
+
+// TYPOGRAPHY
+body {
+
+  // font: 400 14px/1.44 "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  padding-top: 5%;
+  background-color: #fafafa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+// HEADER
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+
+  &:hover {
+    color: #ddd;
+    text-decoration: none;
+  }
+}
+
+// CUSTOM
+.center {
+  text-align: center;
+  margin-bottom: 10px;
+
+  h1 {
+    color: #333;
+  }
+
+  h2 {
+    color: $gray;
+  }
+}
+
+// FOOTER
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: $gray;
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+
+  small {
+    float: left;
+  }
+
+  a {
+    color: $gray;
+
+    &:hover {
+      color: #222;
+    }
+  }
+}
