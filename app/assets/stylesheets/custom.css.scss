@@ -6,7 +6,6 @@ $gray-medium-light: #eaeaea;
 
 // TYPOGRAPHY
 body {
-
   // font: 400 14px/1.44 "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -79,6 +78,15 @@ textarea {
 
   h2 {
     color: $gray;
+  }
+}
+
+.container {
+  img {
+    opacity: .8;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
