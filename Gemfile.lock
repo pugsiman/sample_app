@@ -92,6 +92,7 @@ GEM
       mini_portile (~> 0.6.0)
     pg (0.18.3-x86-mingw32)
     phantomjs (1.9.8.0)
+    puma (2.15.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -177,6 +178,7 @@ DEPENDENCIES
   mini_backtrace
   minitest-reporters
   pg
+  puma
   rails (= 4.2.4)
   rails_12factor
   sass-rails (~> 5.0)
