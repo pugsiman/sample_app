@@ -21,7 +21,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'name should not be too long' do
-    @user.name = 'a' * 22
+    @user.name = 'a' * 40
     assert_not @user.valid?
   end
 
@@ -65,7 +65,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "authenticated? should return false for a user with nil digest" do
+  test 'authenticated? should return false for a user with nil digest' do
     assert_not @user.authenticated?('')
   end
 end

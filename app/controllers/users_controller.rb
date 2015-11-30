@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :index]
   before_action :correct_user,   only: [:edit, :update]
+
+  def index
+    @users = User.paginate page: params[:page], per_page: 15
+  end
 
   def new
     @user = User.new
@@ -14,10 +18,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Hard to believe but it actually worked."
+      flash[:success] = 'Hard to believe but it actually worked.'
       redirect_to @user
     else
-      flash.now[:danger] = "Error."
+      flash.now[:danger] = 'Error.'
       render :new
     end
   end
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Hard to believe but it actually worked."
+      flash[:success] = 'Hard to believe but it actually worked.'
       redirect_to @user
     else
       render :edit
@@ -46,11 +50,10 @@ class UsersController < ApplicationController
   # BEFORE FILTERS
 
   def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in to proceed."
-      redirect_to login_url
-    end
+    return if logged_in?
+    store_location
+    flash[:danger] = 'Please log in to proceed.'
+    redirect_to login_url
   end
 
   def correct_user
