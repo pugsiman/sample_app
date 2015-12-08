@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :index, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only:  :destroy
 
   def index
     @users = User.paginate page: params[:page], per_page: 15
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Hard to believe but it actually worked.'
       redirect_to @user
     else
-      flash.now[:danger] = 'Error.'
+      flash.now[:danger] = 'Couldn\'t create a user.'
       render :new
     end
   end
