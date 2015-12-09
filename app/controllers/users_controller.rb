@@ -8,12 +8,17 @@ class UsersController < ApplicationController
   end
 
   def new
+    if logged_in?
+      flash[:info] = 'You are already logged in, there\'s no need for that.'
+      redirect_to root_url
+    end
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 15)
   end
 
   def create
@@ -57,20 +62,14 @@ class UsersController < ApplicationController
 
   # BEFORE FILTERS
 
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:danger] = 'Please log in to proceed.'
-    redirect_to login_url
-  end
-
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_url unless current_user? @user
   end
 
   def admin_user
-    flash[:danger] = 'Nice try.' unless current_user.admin?
-    redirect_to root_url unless current_user.admin?
+    return if current_user.admin?
+    flash[:danger] = 'Nice try.'
+    redirect_to root_url
   end
 end
