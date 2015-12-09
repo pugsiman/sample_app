@@ -9,9 +9,18 @@ Rails.application.configure do
   config.assets.digest = true
   config.force_ssl = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'localhost:3000'
+  config.action_mailer.delivery_method = :smtp
+  host = 'glacial-plains-8394.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 '587',
+    domain:               'heroku.com',
+    authentication:       :plain,
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
+    enable_starttls_auto: true
+  }
   config.log_level = :debug
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
